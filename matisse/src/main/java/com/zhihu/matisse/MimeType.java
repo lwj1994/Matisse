@@ -26,6 +26,7 @@ import androidx.collection.ArraySet;
 import com.zhihu.matisse.internal.utils.PhotoMetadataUtils;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.Set;
@@ -121,6 +122,20 @@ public enum MimeType {
 
     public static Set<MimeType> ofVideo() {
         return EnumSet.of(MPEG, MP4, QUICKTIME, THREEGPP, THREEGPP2, MKV, WEBM, TS, AVI);
+    }
+
+    public static Set<MimeType> ofImageAndVideo() {
+        return EnumSet.of(JPEG, PNG, GIF, BMP, WEBP, MPEG, MP4, QUICKTIME, THREEGPP, THREEGPP2, MKV, WEBM, TS, AVI);
+    }
+
+    @SafeVarargs
+    public static Set<MimeType> ofCustom(Set<MimeType>... types) {
+        if(types.length == 0) return Collections.emptySet();
+        Set<MimeType> custom = EnumSet.copyOf(types[0]);
+        for(int i = 1; i < types.length; i++) {
+            custom.addAll(types[i]);
+        }
+        return custom;
     }
 
     public static boolean isImage(String mimeType) {

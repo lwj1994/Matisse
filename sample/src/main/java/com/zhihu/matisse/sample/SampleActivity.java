@@ -114,8 +114,9 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.zhihu:
                 Matisse.from(SampleActivity.this)
-                        .choose(MimeType.ofImage(), false)
+                        .choose(MimeType.ofImageAndVideo())
                         .showSingleMediaType(true)
+                        .setMixedSelection(true)
                         .countable(true)
                         .capture(true)
                         .captureStrategy(new CaptureStrategy(true, "com.zhihu.matisse.sample.fileprovider", "test"))

@@ -369,6 +369,16 @@ public final class SelectionCreator {
     }
 
     /**
+     * This will enable to select video and Image together
+     *
+     * @param value enable or disable Mixed selection for Image and Videos
+     */
+    public SelectionCreator setMixedSelection(boolean value) {
+        mSelectionSpec.mixedSelection = value;
+        return this;
+    }
+
+    /**
      * take photo directly
      */
     @Deprecated
